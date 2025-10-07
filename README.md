@@ -12,6 +12,7 @@ Pyway is a database versioning and migration tool inspired by Flyway
 - PostgreSQL
 - DuckDB (Version 0.10+)
 - SQLite 3
+- Oracle Database
 
 ## Download and Install
 To install use pip:
@@ -35,13 +36,13 @@ Priority is `env variables` -> `config file` -> `command args`
 | PYWAY_SQL_MIGRATION_SEPARATOR | | Separator between version and description to the migration file | __ |
 | PYWAY_SQL_MIGRATION_SUFFIXES | | Suffix extension for migration files | .sql |
 | PYWAY_TABLE | --database-table | Name of schema history table | *None* |
-| PYWAY_TYPE | --database-type | Data Base Management System [`postgres`, `mysql`, `duckdb`, `sqlite` ] | *None* *required* |
+| PYWAY_TYPE | --database-type | Data Base Management System [`postgres`, `mysql`, `duckdb`, `sqlite`, `oracle` ] | *None* *required* |
 | PYWAY_DATABASE_HOST | --database-host | Host to connect to the database | *None* |
 | PYWAY_DATABASE_PORT | --database-port | Port to connect to the database | *None* |
 | PYWAY_DATABASE_NAME | --database-name | Name of database to connect | *None* |
 | PYWAY_DATABASE_USERNAME |--database-username | User to use to connect to the database | *None* |
 | PYWAY_DATABASE_PASSWORD | --database-password | Password to use to connect to the database | *None* |
-| PYWAY_DATABASE_COLLATION | --database-collation | Collation type to use in the database | MySQL: utf8mb4_general_ci Postgres: *not supported*|
+| PYWAY_DATABASE_COLLATION | --database-collation | Collation type to use in the database | MySQL: utf8mb4_general_ci Postgres/Oracle: *not supported*|
 | PYWAY_CONFIG_FILE | -c, --config | Configuration file | .pyway.conf |
 | | --schema-file | Used when importing a schema file | |
 | | --checksum-file | Used when updating a checksum - *advanced use*! | |
@@ -68,6 +69,17 @@ database_password: 123456
 database_host: localhost
 database_port: 3306
 database_name: maindb
+database_migration_dir: schema
+database_table: pyway
+```
+_Oracle:_
+```
+database_type: oracle
+database_username: system
+database_password: oracle123
+database_host: localhost
+database_port: 1521
+database_name: XEPDB1
 database_migration_dir: schema
 database_table: pyway
 ```
