@@ -36,7 +36,7 @@ def test_pyway_migrate(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     
     # Configure Oracle-specific settings if available
@@ -62,7 +62,7 @@ def test_pyway_migrate_nothingtodo(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     
     # Configure Oracle-specific settings if available
@@ -90,7 +90,7 @@ def test_pyway_migrate_wallet_authentication(oracle_connect: Oracle) -> None:
     config = ConfigFile()
     config.database_type = "oracle"
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.oracle_use_wallet = True
     config.oracle_wallet_location = oracle_connect.oracle_wallet_location
@@ -112,7 +112,7 @@ def test_pyway_migrate_tns_names(oracle_connect: Oracle) -> None:
     config.database_name = oracle_connect.database_name  # Use as TNS alias
     config.database_username = oracle_connect.username
     config.database_password = oracle_connect.password
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     
     if oracle_connect.oracle_client_lib_dir:
@@ -133,7 +133,7 @@ def test_pyway_migrate_full_dsn(oracle_connect: Oracle) -> None:
     config.database_name = f"(DESCRIPTION=(ADDRESS=(PROTOCOL=TCP)(HOST={oracle_connect.host})(PORT={oracle_connect.port}))(CONNECT_DATA=(SERVICE_NAME={oracle_connect.database_name})))"
     config.database_username = oracle_connect.username
     config.database_password = oracle_connect.password
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     
     if oracle_connect.oracle_client_lib_dir:
