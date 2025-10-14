@@ -32,7 +32,7 @@ def test_pyway_info(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     
     # Configure Oracle-specific settings if available
@@ -58,7 +58,7 @@ def test_pyway_info_nofiles(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'empty')
     
     # Configure Oracle-specific settings if available
@@ -84,7 +84,7 @@ def test_pyway_info_wallet_authentication(oracle_connect: Oracle) -> None:
     config = ConfigFile()
     config.database_type = "oracle"
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.oracle_use_wallet = True
     config.oracle_wallet_location = oracle_connect.oracle_wallet_location
