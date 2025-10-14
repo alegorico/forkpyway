@@ -30,7 +30,7 @@ def test_pyway_table_validate(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = "V01_01__test1.sql"
     
@@ -60,7 +60,7 @@ def test_pyway_table_validate_noschemasfound(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'empty')
     
     # Configure Oracle-specific settings if available
@@ -87,7 +87,7 @@ def test_pyway_table_validate_noschemasfound_skiperror(oracle_connect: Oracle) -
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'empty')
     
     # Configure Oracle-specific settings if available
@@ -114,7 +114,7 @@ def test_pyway_table_validate_diffchecksum(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema_validate_diffchecksum')
     
     # Configure Oracle-specific settings if available
@@ -141,7 +141,7 @@ def test_pyway_table_validate_wallet_authentication(oracle_connect: Oracle) -> N
     config = ConfigFile()
     config.database_type = "oracle"
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = "V01_01__test1.sql"
     config.oracle_use_wallet = True
