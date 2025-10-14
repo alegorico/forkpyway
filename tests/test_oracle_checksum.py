@@ -24,7 +24,7 @@ def test_pyway_table_checksum(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.checksum_file = "V01_01__test1.sql"
     
@@ -58,7 +58,7 @@ def test_pyway_table_checksum_fileinvalid(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.checksum_file = "V01_99__nonexistent.sql"
     
@@ -85,7 +85,7 @@ def test_pyway_table_checksum_fullpath(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.checksum_file = f"{config.database_migration_dir}/V01_01__test1.sql"
     
@@ -118,7 +118,7 @@ def test_pyway_table_checksum_invalid_filename(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.checksum_file = "invalid_filename.sql"
     
@@ -145,7 +145,7 @@ def test_pyway_table_checksum_wallet_authentication(oracle_connect: Oracle) -> N
     config = ConfigFile()
     config.database_type = "oracle"
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.checksum_file = "V01_01__test1.sql"
     config.oracle_use_wallet = True
@@ -176,7 +176,7 @@ def test_pyway_table_checksum_thin_mode(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.checksum_file = "V01_01__test1.sql"
     # Explicitly don't set oracle_client_lib_dir to force Thin mode
@@ -189,3 +189,4 @@ def test_pyway_table_checksum_thin_mode(oracle_connect: Oracle) -> None:
     assert name == "V01_01__test1.sql"
     assert checksum is not None
     assert len(checksum) == 8
+
