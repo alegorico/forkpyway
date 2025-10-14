@@ -40,11 +40,11 @@ class Oracle:
         - ORACLE_TEST_USE_WALLET
         """
         # Default values for testing
-        self.host = host or os.getenv('ORACLE_TEST_HOST', 'localhost')
+        self.host = host or os.getenv('ORACLE_TEST_HOST', 'testhost')
         self.port = port or int(os.getenv('ORACLE_TEST_PORT', '1521'))
-        self.database_name = database_name or os.getenv('ORACLE_TEST_DATABASE', 'XEPDB1')
-        self.username = username or os.getenv('ORACLE_TEST_USERNAME', 'system')
-        self.password = password or os.getenv('ORACLE_TEST_PASSWORD', 'oracle')
+        self.database_name = database_name or os.getenv('ORACLE_TEST_DATABASE', 'TESTDB')
+        self.username = username or os.getenv('ORACLE_TEST_USERNAME', 'testuser')
+        self.password = password or os.getenv('ORACLE_TEST_PASSWORD', 'testpass')
         self.oracle_client_lib_dir = oracle_client_lib_dir or os.getenv('ORACLE_TEST_CLIENT_LIB_DIR')
         self.oracle_wallet_location = oracle_wallet_location or os.getenv('ORACLE_TEST_WALLET_LOCATION')
         self.oracle_use_wallet = oracle_use_wallet or os.getenv('ORACLE_TEST_USE_WALLET', '').lower() == 'true'
