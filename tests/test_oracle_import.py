@@ -35,7 +35,7 @@ def test_pyway_table_import(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = "V01_01__test1.sql"
     
@@ -63,7 +63,7 @@ def test_pyway_table_import_fullfilepath(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = f"{config.database_migration_dir}/V01_01__test1.sql"
     
@@ -91,7 +91,7 @@ def test_pyway_table_import_fileinvalid(oracle_connect: Oracle) -> None:
     config.database_password = oracle_connect.password
     config.database_port = oracle_connect.port
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = "V01_99__nonexistent.sql"
     
@@ -118,7 +118,7 @@ def test_pyway_table_import_wallet_authentication(oracle_connect: Oracle) -> Non
     config = ConfigFile()
     config.database_type = "oracle"
     config.database_name = oracle_connect.database_name
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = "V01_01__test1.sql"
     config.oracle_use_wallet = True
@@ -141,7 +141,7 @@ def test_pyway_table_import_tns_names(oracle_connect: Oracle) -> None:
     config.database_name = oracle_connect.database_name  # Use as TNS alias
     config.database_username = oracle_connect.username
     config.database_password = oracle_connect.password
-    config.database_table = 'pyway'
+    config.database_table = 'pyway_schema_history'
     config.database_migration_dir = os.path.join('tests', 'data', 'schema-oracle')
     config.schema_file = "V01_01__test1.sql"
     
@@ -150,3 +150,4 @@ def test_pyway_table_import_tns_names(oracle_connect: Oracle) -> None:
         
     output = Import(config).run()
     assert output == "V01_01__test1.sql"
+
